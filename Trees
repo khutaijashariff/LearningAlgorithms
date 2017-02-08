@@ -1,0 +1,27 @@
+public class Tree {
+//Given a binary tree, design an algorithm which creates a linked list of all the nodes
+at each depth
+//Question taken from Cracking the Coding interview Sixth Edition
+public ArrayList<LinkedList<TreeNode>> linkedListForDepth() {
+        ArrayList<LinkedList<TreeNode>> result =new ArrayList<LinkedList<TreeNode>>();
+        LinkedList<TreeNode> current = new LinkedList<TreeNode>();
+        if(root!= null) {
+        //add the root in the first linked list
+            current.add(root);
+        }
+        while(current.size() > 0) { ////termination condition, size will be 0 after visiting leaves 
+            result.add(current);
+            LinkedList<TreeNode> parents = current; //save current to iterate through its children
+            current = new LinkedList<TreeNode>(); //new empty linked list current
+            for( TreeNode parent: parents) {
+                if(parent.left!=null) {
+                    current.add(parent.left);
+                }
+                if(parent.right!=null) {
+                    current.add(parent.right);
+                }
+            }
+        }
+        return result;
+  }
+}
