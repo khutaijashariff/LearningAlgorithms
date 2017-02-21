@@ -1,5 +1,6 @@
 public class Sort {
 
+//Bubble Sort
     public void bubbleSort(int[] arr) {
         int temp = 0;
         int n = arr.length;
@@ -16,8 +17,49 @@ public class Sort {
             System.out.println(arr[i]);
         }
     }
+  
+//Merge Sort  
+     public void mergeSort(int[] a, int low, int high) {
+        if (low < high) {
+            int mid = (low + high) / 2; //divide array into 2 at its midpoint
+            mergeSort(a, low, mid); //left half for further division
+            mergeSort(a, mid + 1, high); //right half for further division
+            merge(a, low, high); 
+        }
+    }
+
+    public void merge(int[] a, int low, int high) {
+        int[] temp = new int[high - low + 1];
+        int mid = (low + high) / 2;
+        int i = low;
+        int j = mid + 1;
+        int index = 0;
+        while (i <= mid && j <= high) {
+            if (a[i] < a[j]) { //sort elements from 2 halves into temp
+                temp[index] = a[i];
+                i++;
+            } else {
+                temp[index] = a[j];
+                j++;
+            }
+            index++;
+        }
+        while (i <= mid)  //if elements in one half are left over
+            temp[index++] = a[i++];
+        while (j <= high) //if elements in one half are left over
+            temp[index++] = a[j++];
+
+        i = low;
+
+        for (int k = 0; k < temp.length; k++) {
+            a[i++] = temp[k]; //copy sorted array back to the original array
+        }
+    }
 
     public static void main(String[] args) {
         Sort sortObj = new Sort();
+        int[] a = {2,9,61,1,8,3,9,4};
+        sortObj.bubbleSort(a);
+        sortObj.mergeSort(a, 0, a.length-1);
     }
 }
