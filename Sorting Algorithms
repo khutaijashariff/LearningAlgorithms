@@ -22,8 +22,8 @@ public class Sort {
      public void mergeSort(int[] a, int low, int high) {
         if (low < high) {
             int mid = (low + high) / 2; //divide array into 2 at its midpoint
-            mergeSort(a, low, mid); //left half for further division
-            mergeSort(a, mid + 1, high); //right half for further division
+            mergeSort(a, low, mid); //left half for further division until size 1
+            mergeSort(a, mid + 1, high); //right half for further division until size 1
             merge(a, low, high); 
         }
     }
