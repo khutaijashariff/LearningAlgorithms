@@ -18,7 +18,7 @@ originally sorted in increasing order.
             return mid;
         }
         if (a[low] < a[mid]) {
-            if (key >= a[low] && key < a[mid]) {
+            if (key >= a[low] && key < a[mid]) { //after each rotation one half of array is always sorted
                 return searchInRotatedArray(a, low, mid - 1, key);
             } else {
                 return searchInRotatedArray(a, mid + 1, high, key);
@@ -29,7 +29,7 @@ originally sorted in increasing order.
             } else {
                 return searchInRotatedArray(a, low, mid - 1, key);
             }
-        } else if (a[low] == a[mid]) {
+        } else if (a[low] == a[mid]) { //condition for repeating elements
             if (a[mid] != a[high]) {
                 return searchInRotatedArray(a, mid + 1, high, key);
             } else {
@@ -42,6 +42,26 @@ originally sorted in increasing order.
             }
         }
         return -1;
+    }
+    
+/*
+You are given two sorted arrays, A and B, where A has a large enough buffer at the
+end to hold B. Write a method to merge B into A in sorted order.
+*/
+    public void mergeSortedArrays(int[] a, int[] b, int lastA, int lastB) {
+        int mergeIndex = lastA + lastB -1;
+        int indexA = lastA - 1 ;
+        int indexB = lastB - 1;
+        while(indexB >= 0) {  //loop for length of b[] as it is shorter than a[]
+            if(indexA >= 0 && a[indexA] > a[indexB]) {
+                a[mergeIndex] = a[indexA];
+                indexA--;
+            }else {
+                a[mergeIndex] = a[indexB];
+                indexB--;
+            }
+            mergeIndex--;
+        }
     }
     
      public static void main(String[] args) {
