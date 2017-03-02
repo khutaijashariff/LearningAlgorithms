@@ -159,6 +159,27 @@ end to hold B. Write a method to merge B into A in sorted order.
         }
         return false;
     }
+    
+    /*
+    Peaks and Valleys: In an array of integers, a "peak" is an element which is greater than or equal
+    to the adjacent integers and a "valley" is an element which is less than or equal to the adjacent
+    integers. For example, in the array {5, 8, 6, 2, 3, 4, 6}, {8, 6} are peaks and {5, 2} are valleys. Given an
+    array of integers, sort the array into an alternating sequence of peaks and valleys.
+    */
+    public void sortValleyPeak(int[] array) {
+        Arrays.sort(array);
+        for (int i= 1; i < array.length; i += 2) {
+            swap(array, i - 1, i);
+           }
+           for(int i=0; i< array.length; i++) {
+            System.out.println(array[i]);
+        }
+         }
+
+    public void swap(int[] array, int left, int right) {
+              int temp = array[left];
+              array[left] = array[right];
+              array[right] = temp;
 
     
      public static void main(String[] args) {
@@ -175,4 +196,5 @@ end to hold B. Write a method to merge B into A in sorted order.
         int j = 0;
         boolean  resMatrix = sort.sortedMatrixSearch(m, k, i, j);
         System.out.println(resMatrix);
+        sort.sortValleyPeak(a);
 }
