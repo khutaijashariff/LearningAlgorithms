@@ -17,7 +17,21 @@ public class Sort {
             System.out.println(arr[i]);
         }
     }
-  
+    
+//Insertion Sort
+ public void insertionSort(int[] a) {
+        int pick = 0;
+        for(int i=1; i<a.length; i++) {
+            pick = a[i];
+             for(int j=i-1; j>=0; j--) {
+                 if(a[j]>pick) {
+                     a[j+1] = a[j];
+                     a[j] = pick;
+                 }
+             }
+        }
+    }
+    
 //Merge Sort  
      public void mergeSort(int[] a, int low, int high) {
         if (low < high) {
@@ -61,5 +75,6 @@ public class Sort {
         int[] a = {2,9,61,1,8,3,9,4};
         sortObj.bubbleSort(a);
         sortObj.mergeSort(a, 0, a.length-1);
+        sortObj.insertionSort(a);
     }
 }
