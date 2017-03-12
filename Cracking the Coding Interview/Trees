@@ -1,7 +1,28 @@
 public class Tree {
+
+//Minimal Tree: Given a sorted (increasing order) array with unique integer elements, write an
+algorithm to create a binary search tree with minimal height.
+
+ public TreeNode createMinimalTree(int[] arr) {
+       return createMinimalTree(arr, 0, arr.length-1);
+
+    }
+
+    public TreeNode createMinimalTree(int[] arr, int low, int high) {
+        if(low>high) {
+            return null;
+        }
+        int mid = (high+low)/2;
+        TreeNode n = new TreeNode(arr[mid]);
+        n.left = createMinimalTree(arr, low, mid-1);
+        n.right = createMinimalTree(arr, mid+1, high);
+        return n;
+    }
+    
+    
 //Given a binary tree, design an algorithm which creates a linked list of all the nodes
 at each depth
-//Question taken from Cracking the Coding interview Sixth Edition
+
 public ArrayList<LinkedList<TreeNode>> linkedListForDepth() {
         ArrayList<LinkedList<TreeNode>> result =new ArrayList<LinkedList<TreeNode>>();
         LinkedList<TreeNode> current = new LinkedList<TreeNode>();
@@ -24,4 +45,12 @@ public ArrayList<LinkedList<TreeNode>> linkedListForDepth() {
         }
         return result;
   }
+  
+  
+    public static void main(String[] args) {
+        Tree t1 = new Tree();
+        int[] a = {1,2,3,4,5};
+        TreeNode r = t1.createMinimalTree(a);
+        t1.inOrder(r);
+    }
 }
