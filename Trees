@@ -25,4 +25,16 @@ public void inOrder(TreeNode root) {
             System.out.println(root.data);
         }
     }
+    
+    public int closestValue(TreeNode root, double target) {
+    int closest = root.data;   
+    while(root != null){
+        if(Math.abs(target - root.data) < Math.abs(target - closest)){
+            ret = root.data;
+        }      
+        root = root.data > target? root.left: root.right;
+    }     
+    return closest;
+}
+
 }
