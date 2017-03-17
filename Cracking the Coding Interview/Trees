@@ -1,7 +1,7 @@
 public class Tree {
 
-//Minimal Tree: Given a sorted (increasing order) array with unique integer elements, write an
-algorithm to create a binary search tree with minimal height.
+/*Minimal Tree: Given a sorted (increasing order) array with unique integer elements, write an
+algorithm to create a binary search tree with minimal height.*/
 
  public TreeNode createMinimalTree(int[] arr) {
        return createMinimalTree(arr, 0, arr.length-1);
@@ -20,8 +20,8 @@ algorithm to create a binary search tree with minimal height.
     }
     
     
-//Given a binary tree, design an algorithm which creates a linked list of all the nodes
-at each depth
+/*Given a binary tree, design an algorithm which creates a linked list of all the nodes
+at each depth*/
 
 public ArrayList<LinkedList<TreeNode>> linkedListForDepth() {
         ArrayList<LinkedList<TreeNode>> result =new ArrayList<LinkedList<TreeNode>>();
@@ -45,6 +45,29 @@ public ArrayList<LinkedList<TreeNode>> linkedListForDepth() {
         }
         return result;
   }
+  
+  /*Check Balanced: Implement a function to check if a binary tree is balanced. For the purposes of
+this question, a balanced tree is defined to be a tree such that the heights of the two subtrees of any
+node never differ by more than one.*/
+
+public int getHeight(TreeNode root) {
+       if(root == null) { //Base case
+           return -1;
+       }
+        return Math.max(getHeight(root.left),getHeight(root.right))+1;
+    }
+
+    public boolean isBalanced(TreeNode root) {
+        if(root == null) { //Base case
+            return true;
+        }
+        int heightDiff = getHeight(root.left) - getHeight(root.right);
+        if(Math.abs(heightDiff) > 1) {
+            return false;
+        }else { //Recurse
+            return (isBalanced(root.left) && isBalanced(root.right));
+        }
+    }
   
   
     public static void main(String[] args) {
