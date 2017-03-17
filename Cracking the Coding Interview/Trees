@@ -25,7 +25,9 @@ O(n) space, O(n) time */
     
     
 /*Given a binary tree, design an algorithm which creates a linked list of all the nodes
-at each depth*/
+at each depth
+
+ O(n) space, O(1) time*/
 
 public ArrayList<LinkedList<TreeNode>> linkedListForDepth() {
         ArrayList<LinkedList<TreeNode>> result =new ArrayList<LinkedList<TreeNode>>();
