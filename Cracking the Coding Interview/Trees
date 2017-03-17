@@ -1,5 +1,15 @@
 public class Tree {
 
+public class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int x) {
+      val = x;
+    }
+  }
+
 /*Minimal Tree: Given a sorted (increasing order) array with unique integer elements, write an
 algorithm to create a binary search tree with minimal height.
 
@@ -74,8 +84,32 @@ public int getHeight(TreeNode root) {
             return (isBalanced(root.left) && isBalanced(root.right));
         }
     }
-  
-  
+    
+    
+    /*Implement a function to check if a binary tree is a binary search tree.
+    
+    leetcode: Validate Binary Search Tree 
+    
+    time complexity: O(N)(traverse n nodes) space complexity: O(log N)(on the recursion stack)*/
+    
+      public boolean isValidBST(TreeNode root) {
+        int min = Integer.MIN_VALUE;
+        int max = Integer.MAX_VALUE;
+        return validate(root, min, max);
+    }
+    
+    public boolean validate(TreeNode node, int min, int max) {
+        if(node == null) {
+            return true;
+        }
+        if(min<node.val && max>node.val) {
+            return validate(node.left, min, node.val) && validate(node.right, node.val, max);
+        }else {
+            return false; //check every step for non compliance
+        }
+    }
+    
+   
     public static void main(String[] args) {
         Tree t1 = new Tree();
         int[] a = {1,2,3,4,5};
