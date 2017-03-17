@@ -1,7 +1,11 @@
 public class Tree {
 
 /*Minimal Tree: Given a sorted (increasing order) array with unique integer elements, write an
-algorithm to create a binary search tree with minimal height.*/
+algorithm to create a binary search tree with minimal height.
+
+leetcode: Convert Sorted Array to Binary Search Tree 
+
+O(n) space, O(n) time */
 
  public TreeNode createMinimalTree(int[] arr) {
        return createMinimalTree(arr, 0, arr.length-1);
