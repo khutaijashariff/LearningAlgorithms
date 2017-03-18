@@ -114,7 +114,7 @@ First Common Ancestor: Design an algorithm and write code to find the first comm
 of two nodes in a binary tree. Avoid storing additional nodes in a data structure. NOTE: This is not
 necessarily a binary search tree.
 
-leetcode: Lowest Common Ancestor of a Binary Tree
+leetcode: Lowest Common Ancestor of a Binary Tree */
 
 public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (!covers(root, p) || (!covers(root, q))) {
@@ -141,7 +141,33 @@ public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == p) return true;
         return covers(root.left, p) || covers(root.right, p);
     }
-*/
+    
+ /* Tl and T2 are two very large binary trees, with Tl much bigger than T2. Create an
+algorithm to determine ifT2 is a subtree of Tl. */
+
+     public boolean isSubtree(TreeNode t1, TreeNode t2) {
+        if(t1==null) {
+            return false;
+        }else if(t2 == null)  {
+            return true;
+        }else if(t1.data == t2.data && matchTree(t1,t2)){
+            return true;
+        }
+        return isSubtree(t1.left, t2) || isSubtree(t1.right, t2);
+    }
+
+    public boolean matchTree(TreeNode t1, TreeNode t2) {
+        if(t1 == null && t2 == null) {
+            return true; //nothing left in sub tree
+        }else if(t1 == null || t2 == null) {
+            return false;  //exactly one tree is empty therefore trees dont match
+        }else if(t1.val != t2.val) {
+            return false;  //data does not match
+        }else {
+           return matchTree(t1.left, t2.left) && matchTree(t1.right, t2.right);
+        }
+    }
+
    
     public static void main(String[] args) {
         Tree t1 = new Tree();
