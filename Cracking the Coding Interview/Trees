@@ -167,12 +167,42 @@ algorithm to determine ifT2 is a subtree of Tl. */
            return matchTree(t1.left, t2.left) && matchTree(t1.right, t2.right);
         }
     }
+    
+ /**
+   * Paths with Sum: You are given a binary tree in which each node contains an integer value (which
+   * might be positive or negative). Design an algorithm to count the number of paths that sum to a
+   * given value. The path does not need to start or end at the root or a leaf, but it must go downwards
+   * (traveling only from parent nodes to child nodes).
+   */
+   //ALgorithm for finding paths only from root
+    public ArrayList<ArrayList<Integer>> pathSum(TreeNode root, int sum) {
+        ArrayList<ArrayList<Integer>> paths = new ArrayList<ArrayList<Integer>>();
+        ArrayList<Integer> curPath = new ArrayList<Integer>();
+        int curSum = 0;
+        pathSum(root, paths, curPath, curSum, sum);
+        //  System.out.println(paths.size());
+        return paths;
+    }
 
-   
-    public static void main(String[] args) {
-        Tree t1 = new Tree();
-        int[] a = {1,2,3,4,5};
-        TreeNode r = t1.createMinimalTree(a);
-        t1.inOrder(r);
+
+    private void pathSum(TreeNode node, ArrayList<ArrayList<Integer>> paths, ArrayList<Integer> curPath, int curSum, int sum) {
+        if (node == null) {
+            return;
+        }
+        if (node.left == null && node.right == null && curSum + node.data == sum) {
+            ArrayList<Integer> extPath = new ArrayList<Integer>(curPath);
+            extPath.add(node.data);
+            paths.add(extPath);
+        } else {
+            int newSum = curSum + node.data;
+            ArrayList<Integer> extPath = new ArrayList<Integer>(curPath);
+            extPath.add(node.data);
+            if (node.right != null) {
+                pathSum(node.right, paths, extPath, newSum, sum);
+            }
+            if (node.left != null) {
+                pathSum(node.left, paths, extPath, newSum, sum);
+            }
+        }
     }
 }
