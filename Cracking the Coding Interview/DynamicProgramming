@@ -71,7 +71,7 @@ public int fibonacci(int n) {
  *
  **/
  
- public int pascalsTriangle(int n) {
+ public int pascalsTriangle(int n, int k) {
  int[][] pascal = new int[n+1][n+1];
   for(int i=0; i<n+1; i++) {
  	pascal[i][0] = 1;
