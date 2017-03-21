@@ -45,4 +45,23 @@ public int fibonacci(int n) {
     return max;
    }
    
+   //Optimization
+   public int bestProfit(int[] prices) {
+	int size = prices.length;
+	int min = Integer.MAX_VALUE;
+	int max = Integer.MIN_VALUE;
+		
+	for(int i = 0; i < size; i++) {
+		if(min > prices[i]) {
+			min = prices[i];
+		}	
+			
+	int mayBeMax = prices[i] - min;
+	if(max < mayBeMax) {
+		max = mayBeMax;
+	}
+	}
+	 return max;
+	}
+   
    }
