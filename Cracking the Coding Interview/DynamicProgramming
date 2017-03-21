@@ -63,5 +63,26 @@ public int fibonacci(int n) {
 	}
 	 return max;
 	}
+	
+/**
+ * Find the nth row kth element in the pascal's triangle
+ * @param n
+ * @param k
+ *
+ **/
+ 
+ public int pascalsTriangle(int n) {
+ int[][] pascal = new int[n+1][n+1];
+  for(int i=0; i<n+1; i++) {
+ 	pascal[i][0] = 1;
+	pascal[i][i] = 1;
+  }
+  for(int j=0; j<k+1; j++) {
+   for(int i=0; i<n+1; i++) {
+   	pascal[i][j] = pascal[i-1][j] + pascal[i-1][j-1];
+   }
+  }
+  return pascal[n][k];
+ }
    
    }
