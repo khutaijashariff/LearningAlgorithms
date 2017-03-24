@@ -78,13 +78,40 @@ public class Sort {
     
     //Quick Sort
     
-    
+    public void quicksort(int[] a, int low, int high) {
+        if (low >= high) {
+            return;
+        }
+        int pivotIndex = partition(a, low, high);
+        quicksort(a, low, pivotIndex - 1);
+        quicksort(a, pivotIndex + 1, high);
 
+    }
+
+    private int partition(int[] a, int low, int high) {
+        int pivot = a[high];
+        int i = low - 1;
+        for (int j = low; j <= high; j++) {
+            if (a[j] <= pivot) {
+                i++;
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
+        i++;
+        int pivotPos = a[i];
+        a[i] = a[high];
+        a[high] = pivotPos;
+        return i;
+    }
+    
     public static void main(String[] args) {
         Sort sortObj = new Sort();
         int[] a = {2,9,61,1,8,3,9,4};
         sortObj.bubbleSort(a);
         sortObj.mergeSort(a, 0, a.length-1);
         sortObj.insertionSort(a);
+        sortObj.quicksort(a, 0, a.length-1);
     }
 }
