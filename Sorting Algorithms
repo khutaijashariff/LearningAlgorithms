@@ -37,13 +37,15 @@ public class Sort {
     }
     
 //Merge Sort  
-     public void mergeSort(int[] a, int low, int high) {
-        if (low < high) {
-            int mid = (low + high) / 2; //divide array into 2 at its midpoint
-            mergeSort(a, low, mid); //left half for further division until size 1
-            mergeSort(a, mid + 1, high); //right half for further division until size 1
-            merge(a, low, high); 
+     public void mergesort(int[] a, int low, int high) {
+     //Base Case
+        if (low >= high) {
+            return;
         }
+        int mid = (low + high) / 2;
+        mergesort(a, low, mid); //divide array to its lowest divisible element 
+        mergesort(a, mid + 1, high);
+        merge(a, low, high);
     }
 
     public void merge(int[] a, int low, int high) {
@@ -53,7 +55,7 @@ public class Sort {
         int j = mid + 1;
         int index = 0;
         while (i <= mid && j <= high) {
-            if (a[i] < a[j]) { //sort elements from 2 halves into temp
+            if (a[i] < a[j]) {
                 temp[index] = a[i];
                 i++;
             } else {
@@ -62,15 +64,15 @@ public class Sort {
             }
             index++;
         }
-        while (i <= mid)  //if elements in one half are left over
+        //copy any left out elements in either half
+        while (i <= mid)
             temp[index++] = a[i++];
-        while (j <= high) //if elements in one half are left over
+        while (j <= high)
             temp[index++] = a[j++];
-
+        //change array a at the current low position
         i = low;
-
-        for (int k = 0; k < temp.length; k++) {
-            a[i++] = temp[k]; //copy sorted array back to the original array
+        for (int k = 0; k < temp.length; k++) { //high is determined by length of temp
+            a[i++] = temp[k];
         }
     }
 
