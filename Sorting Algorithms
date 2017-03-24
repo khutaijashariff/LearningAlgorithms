@@ -75,6 +75,10 @@ public class Sort {
             a[i++] = temp[k];
         }
     }
+    
+    //Quick Sort
+    
+    
 
     public static void main(String[] args) {
         Sort sortObj = new Sort();
