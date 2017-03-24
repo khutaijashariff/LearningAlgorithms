@@ -36,6 +36,9 @@ public class Sort {
         }
     }
     
+//Selection sort
+
+    
 //Merge Sort  
      public void mergesort(int[] a, int low, int high) {
      //Base Case
@@ -76,7 +79,7 @@ public class Sort {
         }
     }
     
-    //Quick Sort
+//Quick Sort
     
     public void quicksort(int[] a, int low, int high) {
         if (low >= high) {
@@ -105,6 +108,28 @@ public class Sort {
         a[high] = pivotPos;
         return i;
     }
+    //Count Sort
+    //range is given
+    
+    public void countsort(int[] arr) {
+       // int range = getMax(arr);
+        int[] count = new int[arr.length];
+        //store count of each value
+        for (int i = 0; i < arr.length; i++) {
+            count[arr[i]]++;
+        }
+        //go through entire range
+        int index = 0;
+        for (int i = 0; i <= range; i++) {
+            //if a value in this range has occurred more than once
+            while (count[i] > 0) {
+                arr[index] = i; //add value in the index
+                index++;      //increment index
+                count[i]--;   //decrement number of times the value occurred in count array
+            }
+        }
+    }
+
     
     public static void main(String[] args) {
         Sort sortObj = new Sort();
