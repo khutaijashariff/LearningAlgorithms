@@ -20,15 +20,19 @@ public class Sort {
     
 //Insertion Sort
  public void insertionSort(int[] a) {
-        int pick = 0;
-        for(int i=1; i<a.length; i++) {
-            pick = a[i];
-             for(int j=i-1; j>=0; j--) {
-                 if(a[j]>pick) {
-                     a[j+1] = a[j];
-                     a[j] = pick;
+        int minIndex = 0;
+        for(int i=0; i<a.length; i++) {
+            minIndex = i;
+             for(int j=i+1; j<a.length; j++) {
+                 if(a[j]<a[minIndex]) {
+                     minIndex = j;
                  }
              }
+              if(i!=minIndex) {
+                    temp = arr[i];
+                    arr[i] = arr[minIndex];
+                    arr[minIndex] = temp;
+              }
         }
     }
     
