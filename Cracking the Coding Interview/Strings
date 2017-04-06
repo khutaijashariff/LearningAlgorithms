@@ -7,12 +7,12 @@ public class Strings {
             return false;
         }
         boolean[] charSet  = new boolean[256];
-        for(int i=0; i<s.length()-1; i++) {
-            int value = s.charAt(i);
-            if(charSet[value]) {
+        for(int i=0; i<s.length(); i++) {
+            int index = s.charAt(i);
+            if(charSet[index]) {
                 return false;
             }
-            charSet[value] = true;
+            charSet[index] = true;
         }
         return true;
     }
