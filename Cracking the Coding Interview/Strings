@@ -169,7 +169,6 @@ public class Strings {
         TreeMap<Character, Integer> tree = new TreeMap<Character, Integer>();
         StringBuilder sb = new StringBuilder();
         for(int i=0; i<s.length(); i++) {
-            System.out.println(s.charAt(i));
             if(tree.containsKey(s.charAt(i))) {
                 tree.put(s.charAt(i), tree.get(s.charAt(i))+1);
             }else {
