@@ -182,13 +182,51 @@ public class Strings {
         String res = sb.toString();
         return s.length() >= res.length()? res : s;
     }
-
     
-      public static void main(String[] args) {
-        Strings s = new Strings();
-        //test unique characters
-        String input1 = "terakfjydlighboh";
-        boolean result1 = s.checkUniqueCharacters(input1);
-       System.out.println(result1);
-     }
+    /**
+     *Zero Matrix: Write an algorithm such that if an element in an MxN matrix is 0, its entire row and
+     *column are set to 0.
+    */
+    
+    
+     public int[][] setZeroes(int[][] matrix) {
+        boolean[] row = new boolean[matrix.length];
+        boolean[] col = new boolean[matrix[0].length];
+        for(int i=0; i<matrix.length; i++) {
+            for(int j=0; j<matrix[0].length; j++) {
+                if(matrix[i][j] == 0) {
+                    row[i] = true;
+                    col[j] = true;
+                }
+            }
+        }
+
+        for(int i=0; i<row.length; i++) {
+            if(row[i]) {
+                nullifyRow(matrix, i);
+            }
+        }
+
+        for(int j=0; j<col.length; j++) {
+            if(col[j]) {
+                nullifyCol(matrix, j);
+            }
+        }
+
+        return matrix;
+    }
+
+    private void nullifyRow(int[][] matrix, int row) {
+        for(int j=0; j<matrix[0].length; j++) {
+            matrix[row][j] = 0;
+        }
+
+    }
+
+    private void nullifyCol(int[][] matrix, int col) {
+        for(int i=0; i<matrix.length; i++) {
+            matrix[i][col] = 0;
+        }
+
+    }
 }
