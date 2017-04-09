@@ -1,4 +1,28 @@
 public class Strings {
+
+/** Given a two strings (one smaller than the other), find if the smaller
+  * is part of the larger and return the index of the first occurrence of the smaller
+  * return -1 otherwise */
+
+// Can change this problem to return true or false too
+
+public int stringContains(String larger, String smaller) {
+        int largerSize = larger.length();
+        int smallerSize = smaller.length();
+        int j = 0;
+        for (int i = 0; i < largerSize - smallerSize + 1; i++) {
+            for (j = 0; j < smallerSize; j++) { //open for loop everytime I hit index i
+                if (larger.charAt(i + j) != smaller.charAt(j)) {
+                    break;
+                }
+            }
+            if (j == smallerSize) { //check if inner for loop terminated on break or because it matched
+                return i;
+            }
+        }
+        return -1;
+    }
+    
 /** Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2 */
 
 public String addStrings(String num1, String num2) {
