@@ -174,10 +174,10 @@ public class Strings {
     
     char curChar = original.charAt(0);
     int count = 1;
-    for (int i = 1; i < original.length(); ++i) {
+    for (int i = 1; i < original.length(); i++) {
       char ch = original.charAt(i);
       if (ch == curChar) {
-        ++count;
+        count++;
       }
       else {
         sb.append(curChar);
