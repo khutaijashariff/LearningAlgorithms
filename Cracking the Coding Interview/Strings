@@ -166,7 +166,7 @@ public class Strings {
     */
     
     public String stringCompression(String original) {
-       if (original == null || original.length() <= 1) {
+       if (original == null || original.length() == 0) {
       return original;
     }
 
