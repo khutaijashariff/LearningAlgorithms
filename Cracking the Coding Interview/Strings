@@ -165,22 +165,31 @@ public class Strings {
      *the original string. You can assume the string has only uppercase and lowercase letters (a - z).
     */
     
-    public String stringCompression(String s) {
-        TreeMap<Character, Integer> tree = new TreeMap<Character, Integer>();
-        StringBuilder sb = new StringBuilder();
-        for(int i=0; i<s.length(); i++) {
-            if(tree.containsKey(s.charAt(i))) {
-                tree.put(s.charAt(i), tree.get(s.charAt(i))+1);
-            }else {
-                tree.put(s.charAt(i), 1);
-            }
-        }
-        for(char key: tree.keySet()) {
-            sb.append(key);
-            sb.append(tree.get(key));
-        }
-        String res = sb.toString();
-        return s.length() >= res.length()? res : s;
+    public String stringCompression(String original) {
+       if (original == null || original.length() <= 1) {
+      return original;
+    }
+
+    StringBuilder sb = new StringBuilder();
+    
+    char curChar = original.charAt(0);
+    int count = 1;
+    for (int i = 1; i < original.length(); ++i) {
+      char ch = original.charAt(i);
+      if (ch == curChar) {
+        ++count;
+      }
+      else {
+        sb.append(curChar);
+        sb.append(count);
+        curChar = ch;
+        count = 1;
+      }
+    }  
+    sb.append(curChar);
+    sb.append(count);
+    
+        return sb.length() < original.length()? sb.toString() : original;
     }
     
     /**
