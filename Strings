@@ -10,7 +10,8 @@ public int stringContains(String larger, String smaller) {
         int largerSize = larger.length();
         int smallerSize = smaller.length();
         int j = 0;
-        for (int i = 0; i < largerSize - smallerSize + 1; i++) {
+        for (int i = 0; i < largerSize - smallerSize + 1; i++) { //j will iterate i+j times so if i==largerSize the i+j will have a value
+        //of out of bounds at some point
             for (j = 0; j < smallerSize; j++) { //open for loop everytime I hit index i
                 if (larger.charAt(i + j) != smaller.charAt(j)) {
                     break;
