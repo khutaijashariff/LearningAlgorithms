@@ -129,6 +129,7 @@ end to hold B. Write a method to merge B into A in sorted order.
             return mid;
         }else if(strings[mid].compareTo(str) < 0) { //compareTo returns negetive value when first string has lower alphabet than the
         //next one abc with xyz
+        //0 if strings are equal
             return sparseSearch(strings, str, mid+1, last);
         }else { //xyz with abc
             return sparseSearch(strings, str, first, mid-1);
