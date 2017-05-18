@@ -40,3 +40,34 @@ public void deleteRepeatingNode() {
     /**
     * Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list.
     **/
+    
+     public int kthToLast(int k) {
+        LinkedListNode itr1 = head;
+        LinkedListNode itr2 = head;
+        if(itr1 == null) {
+            return 0;
+        }
+        for(int i=0; i<k-1; i++) {
+            itr1 = itr1.next;
+            if(itr1 == null ) {
+                return 0;
+            }
+        }
+        if(itr1 == null ) {
+            return 0;
+        }
+        while(itr1.next!=null) {
+            itr1 = itr1.next;
+            itr2 = itr2.next;
+        }
+        return itr2.data;
+    }
+    
+    /**
+    * Delete Middle Node: Implement an algorithm to delete a node in the middle (i.e., any node but
+    * the first and last node, not necessarily the exact middle) of a singly linked list, given only access to
+    * that node.
+    * EXAMPLE
+    * input:the node c from the linked list a->b->c->d->e->f
+    * Result: nothing is returned, but the new linked list looks like a ->b->d- >e- >f
+**/
