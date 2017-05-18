@@ -1,1 +1,42 @@
 
+/**
+* Remove Dups: Write code to remove duplicates from an unsorted linked list.
+* FOLLOW UP
+* How would you solve this problem if a temporary buffer is not allowed?
+**/
+
+ //O(N) Time complexity where N is no.of elements in Linked List
+public void deleteRepeatingNode() {
+        Hashtable table = new Hashtable();
+        LinkedListNode prev = null;
+        LinkedListNode curr = head;
+        while (curr != null) {
+           if(table.containsKey(curr.data)) {
+               prev.next = curr.next;
+           } else {
+               table.put(curr.data, true);
+               prev = curr;
+           }
+            curr = curr.next;
+        }
+    }
+
+    //optimized version O(N)^2 Time complexity
+    public void deleteRepeatingNode(LinkedListNode head) {
+        LinkedListNode curr = head;
+        while(curr!=null) {
+            LinkedListNode runner = curr;
+            while(runner.next!=null) {
+                if(runner.next.data == curr.data) {
+                    runner.next = runner.next.next;
+                }else {
+                    runner = runner.next;
+                }
+            }
+            curr=curr.next;
+        }
+    }
+    
+    /**
+    * Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list.
+    **/
